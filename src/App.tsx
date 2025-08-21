@@ -26,11 +26,10 @@ export class App extends Component {
 
     return (
       <div className="App">
-        {pressedKey ? (
-          <span>The last pressed key is {pressedKey}</span>
-        ) : (
-          <span>Nothing was pressed yet</span>
-        )}
+        {pressedKey
+          ? <span>The last pressed key is [{pressedKey}]A</span>
+          : <span>Nothing was pressed yet</span>
+        }
       </div>
     );
   }
