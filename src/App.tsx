@@ -9,16 +9,16 @@ export class App extends Component {
     pressedKey: null,
   };
 
-  handleKeyDown = (event: KeyboardEvent): void => {
+  handleKeyUp = (event: KeyboardEvent): void => {
     this.setState({ pressedKey: event.key });
   };
 
   componentDidMount(): void {
-    document.addEventListener('keydown', this.handleKeyDown);
+    document.addEventListener('keyup', this.handleKeyUp);
   }
 
   componentWillUnmount(): void {
-    document.removeEventListener('keydown', this.handleKeyDown);
+    document.removeEventListener('keyup', this.handleKeyUp);
   }
 
   render() {
@@ -26,10 +26,10 @@ export class App extends Component {
 
     return (
       <div className="App">
-        {pressedKey === null ? (
-          <p className="App__message">Nothing was pressed yet</p>
+        {pressedKey ? (
+          <span>The last pressed key is {pressedKey}</span>
         ) : (
-          <p className="App__message">The last pressed key is [{pressedKey}]</p>
+          <span>Nothing was pressed yet</span>
         )}
       </div>
     );
